@@ -1,4 +1,4 @@
-package br.com.alura.aulas;
+package aulas;
 
 import java.math.BigDecimal;
 
@@ -8,13 +8,13 @@ import javax.persistence.Persistence;
 
 import br.com.alura.modelo.Produto;
 
-public class A_cadastroDeProdutos {
+public class A_cadastroDeProdutosNoBD {
 
 	public static void main(String[] args) {
 		
 		Produto celular = new Produto();
 		celular.setNome("Xiaomi");
-		celular.setDescricao("Muito legal");
+		celular.setDescricao("Muito Bom");
 		celular.setPreco(new BigDecimal(800));
 		
 		// Persistindo uma Entidade
@@ -22,6 +22,9 @@ public class A_cadastroDeProdutos {
 				.createEntityManagerFactory("loja"); // loja é qual BD do persistence-unit
 		EntityManager em = factory.createEntityManager();
 		
+		em.getTransaction().begin();
 		em.persist(celular);
+		em.getTransaction().commit();
+		em.close();
 	}
 }
