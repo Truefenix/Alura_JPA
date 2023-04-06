@@ -6,16 +6,18 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import modelo.Categorias;
 import modelo.Produto;
 
 public class A_cadastroDeProdutosNoBD {
 
 	public static void main(String[] args) {
 		
-		Produto celular = new Produto();
-		celular.setNome("Xiaomi");
-		celular.setDescricao("Muito Bom");
-		celular.setPreco(new BigDecimal(800));
+		Produto eletro = new Produto();
+		eletro.setNome("Eletro");
+		eletro.setDescricao("Muito Bom");
+		eletro.setPreco(new BigDecimal(800));
+		eletro.setCategorias(Categorias.CELULARES);
 		
 		// Persistindo uma Entidade
 		EntityManagerFactory factory = Persistence
@@ -23,7 +25,7 @@ public class A_cadastroDeProdutosNoBD {
 		EntityManager em = factory.createEntityManager();
 		
 		em.getTransaction().begin();
-		em.persist(celular);
+		em.persist(eletro);
 		em.getTransaction().commit();
 		em.close();
 	}
