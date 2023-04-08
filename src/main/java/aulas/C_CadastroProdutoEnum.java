@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 import javax.persistence.EntityManager;
 
+import dao.CategoriaDao;
 import dao.ProdutoDao;
 import modelo.Categorias;
 import modelo.Produto;
@@ -13,13 +14,16 @@ public class C_CadastroProdutoEnum {
 
 public static void main(String[] args) {
 		
-		Produto samsung = new Produto( "Samsung", "Muito Bom", new BigDecimal(1000), Categorias.CELULARES);
+		Categorias celular = new Categorias("CELULAR");
+		Produto samsung = new Produto( "Samsung", "Muito Bom", new BigDecimal(1000), celular);
 		
 		EntityManager conexao = JPAUtil.getEntityManager();
-		ProdutoDao dao = new ProdutoDao(conexao);
+		ProdutoDao produtoDao = new ProdutoDao(conexao);
+		CategoriaDao categoriaDao = new CategoriaDao(conexao);
 		
 		conexao.getTransaction().begin();
-		dao.cadastrar(samsung);
+		categoriaDao.cadastrar(celular);
+		produtoDao.cadastrar(samsung);
 		conexao.getTransaction().commit();
 		conexao.close();
 	}
