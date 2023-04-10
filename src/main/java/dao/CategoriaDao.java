@@ -22,7 +22,7 @@ public class CategoriaDao {
 		this.conexao.merge(categoria);
 	}
 	
-	// Deleta
+	// Remover
 	public void remover(Categorias categoria) {
 		categoria = conexao.merge(categoria); // para deletar sempre no managed
 		

@@ -26,6 +26,7 @@
 				
 			<!-- Vai mostrar no console se salvou ou não -->
 			<property name="hibernate.show_sql" value="true"/>
+			<property name="hibernate.format_sql" value="true"/>
 			
 			<!-- Vai apenas atualizar os dados novos -->
 			<property name="hibernate.hbm2ddl.auto" value="update"/>
